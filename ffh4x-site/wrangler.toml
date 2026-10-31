@@ -1,0 +1,29 @@
+name = "ffh4x-panel"
+compatibility_date = "2024-10-31"
+pages_build_output_dir = "./public"
+
+[env.production]
+name = "ffh4x-panel-prod"
+routes = [
+  { pattern = "ffh4x.dev/*", zone_name = "ffh4x.dev" },
+  { pattern = "www.ffh4x.dev/*", zone_name = "ffh4x.dev" }
+]
+
+[env.preview]
+name = "ffh4x-panel-preview"
+
+[[env.production.vars]]
+SITE_URL = "https://ffh4x.dev"
+
+[[env.preview.vars]]
+SITE_URL = "https://preview.ffh4x.pages.dev"
+
+[build]
+command = "echo 'Static site - no build needed'"
+cwd = "."
+
+[functions]
+node_compat = true
+
+[limits]
+max_body_size = "10MB"
